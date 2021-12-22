@@ -1,0 +1,43 @@
+.content-container {
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  padding: 26px 23px;
+  margin-top: 43px;
+}
+
+.b-type {
+  margin-bottom: 16px;
+}
+
+.b-title {
+  margin-bottom: 6px;
+}
+
+.t-header {
+  margin: 30px 0 12px 0;
+}
+
+.b-content {
+  margin-top: 46px;
+  padding: 0 6px;
+}
+
+.table-responsive {
+  border-top: 1px solid #252525;
+}
+
+.btn-primary {
+  float: right;
+}
+
+.board-count {
+  white-space: nowrap;
+}
+
+.count {
+  display: inline-block;
+}
+
+.t-header .input-group {
+  width: auto;
+}

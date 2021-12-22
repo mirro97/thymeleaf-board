@@ -1,0 +1,45 @@
+/* common css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+* {
+  color: #495057;
+  font-size: 15px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  height: 100%;
+}
+
+.logout.btn {
+  font-size: 12px;
+  border-radius: 21px;
+  line-height: 1;
+  margin-left: 6px;
+}
+
+body h1,
+body h2,
+body h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+a {
+  display: block;
+}
+
+span {
+  display: inline-block;
+}
+
+body label {
+  font-weight: 400;
+}
+
+.dropdown-btn {
+  background-color: #d0ebff;
+}
+
+input {
+  padding: 6px 9px;
+}

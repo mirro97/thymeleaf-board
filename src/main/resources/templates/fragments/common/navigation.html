@@ -1,0 +1,113 @@
+<nav th:fragment="commonNavigation">
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a
+      >
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+
+    <!-- Nav Item - Test -->
+
+    <!-- Heading -->
+    <div class="sidebar-heading">게시판 타입</div>
+
+    <ul id="sortable">
+      <li class="nav-item type" th:each="item, index:${typeOrderList}">
+        <a class="nav-link type-style" th:href="${item.type}+'board'">
+          <i class="fas fa-fw fa-comments"></i>
+          <span th:if="${item.type=='free'}" th:data-idx="${item.idx}">자유게시판 </span>
+          <span th:if="${item.type=='daily'}" th:data-idx="${item.idx}">일상게시판 </span>
+          <span th:if="${item.type=='share'}" th:data-idx="${item.idx}">자료공유게시판 </span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block" />
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+  </ul>
+
+  <script></script>
+
+  <script>
+    $(function () {
+      $("#sortable").sortable({
+        // containment: "#div-menu",
+        stop: function (event, ui) {
+          let modifiedList = [];
+          $("#sortable span").each(function (index, elem) {
+            modifiedList;
+            modifiedList.push({
+              idx: $(elem).data("idx"),
+              menuOrder: index,
+            });
+          });
+
+          console.log(modifiedList);
+          $.ajax({
+            async: true,
+            url: "/typeList",
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({
+              modifiedList,
+            }),
+            success: function (data) {
+              console.log(data);
+            },
+          });
+        },
+      });
+      $("ul, li").disableSelection();
+    });
+  </script>
+
+  <script>
+    function isActive() {
+      var pathName = location.pathname;
+      var elem = document.querySelector('[href="' + pathName + '"]');
+      if (elem) {
+        var pn = elem.parentNode;
+
+        console.log("현재 경로: ", pathName);
+
+        while (pn) {
+          if (pn.classList) {
+            if (pn.classList.contains("nav-item")) {
+              pn.classList.add("active");
+            } else if (pn.classList.contains("collapse")) {
+              pn.classList.add("show");
+            }
+          }
+          pn = pn.parentNode;
+        }
+
+        if (elem.classList.contains("collapse-item")) {
+          elem.classList.add("active");
+        }
+      }
+    }
+    isActive();
+  </script>
+</nav>

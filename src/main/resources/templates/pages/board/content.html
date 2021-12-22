@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html layout:decorate="layout/board_layout">
+  <th:block layout:fragment="content_body">
+    <!-- <span th:text="${boardList}"></span> -->
+    <div class="container">
+      <div class="card content-container" style="width: 100%">
+        <div class="card-body">
+          <div class="b-header">
+            <span class="b-type" th:if="${boardList.type=='free'}">자유게시판</span>
+            <span class="b-type" th:if="${boardList.type=='share'}">공유게시판</span>
+            <span class="b-type" th:if="${boardList.type=='daily'}">일상게시판</span>
+            <h3 class="mb-0 b-title" th:text="${boardList.title}"></h3>
+            <span th:text="${boardList.writer}"></span>
+            <span th:text="${boardList.regdate}"></span>
+          </div>
+
+          <p class="card-text b-content" th:utext="${boardList.content}"></p>
+        </div>
+      </div>
+    </div>
+  </th:block>
+</html>

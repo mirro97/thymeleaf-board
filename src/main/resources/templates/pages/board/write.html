@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html layout:decorate="layout/board_layout">
+  <div layout:fragment="content_body" class="container">
+    <div class="header-wrapper">
+      <h1 class="title">새 글 작성하기</h1>
+    </div>
+    <form id="formBoard" th:action="@{/new}" method="post" class="text-input">
+      <label for="title" class="input-label">제목을 입력해주세요</label>
+      <input type="text" name="title" id="title" class="input-design" ht:value="title" />
+
+      <div class="editor" id="editor"></div>
+      <textarea name="content" id="content" style="display: none"></textarea>
+      <button class="btn" type="button" onclick="clickSubmit()">등록</button>
+    </form>
+  </div>
+
+  <th:block layout:fragment="script_body">
+    <!-- toast ui -->
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <script>
+      const Editor = toastui.Editor;
+
+      const editor = new Editor({
+        el: document.querySelector("#editor"),
+        height: "600px",
+        initialEditType: "WYSIWYG",
+        previewStyle: "vertical",
+      });
+
+      clickSubmit = function () {
+        $("#content").val(editor.getHTML());
+        $("#formBoard").submit();
+      };
+      seeMd = function () {
+        alert(editor.getMarkdown());
+      };
+    </script>
+  </th:block>
+</html>

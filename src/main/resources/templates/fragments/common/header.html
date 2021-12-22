@@ -1,0 +1,17 @@
+<header th:fragment="commonHeader">
+  <div class="flex-x flex-end">
+    <h1><a th:href="@{/}">게시판 프로젝트</a></h1>
+    <div class="flex-x">
+      <!-- <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle t-btn dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{ userId }} 님</button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a to="/modify">회원정보 수정하기</a></li>
+        </ul>
+      </div> -->
+      <span><a>로그인하기</a></span>
+      <!-- <span th:if="!${user.id}"><a to="/login">로그인하기</a></span> -->
+      <!-- <button th:unless="!${user.id}" class="logout" @click="logout">로그아웃</button> -->
+      <!-- <button class="logout btn" @click="logout">로그아웃</button> -->
+    </div>
+  </div>
+</header>

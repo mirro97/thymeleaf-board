@@ -1,0 +1,30 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sortable .nav-item {
+  padding: 6px 13px;
+}
+
+.sidebar #sortable .nav-item .nav-link {
+  width: 100%;
+  color: #4e73df;
+}
+
+.sidebar-dark #sortable .nav-item .nav-link i {
+  color: #4e73df;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+.type-style {
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+#sortable > li {
+  margin: 0;
+}

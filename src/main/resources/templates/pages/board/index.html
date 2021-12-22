@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html layout:decorate="layout/board_layout">
+  <div layout:fragment="content_body" class="container">
+    <div class="row">
+      <div class="col">
+        <div class="t-header flex-x flex-end">
+          <div class="board-count">
+            게시글
+            <span class="count" th:if="${boardCount}" th:text="${boardCount}"></span>
+            <span class="count" th:if="!${boardCount}" th:text="0"></span>
+            건
+          </div>
+
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="search" />
+            <div class="input-group-btn">
+              <button class="btn btn-default"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <colgroup>
+              <!-- <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="20%" />
+                <col width="20%" />
+                <col width="30%" /> -->
+              <col class="col-xs-1" />
+              <col class="col-xs-1" />
+              <col class="col-xs-1" />
+              <col class="col-xs-2" />
+              <col class="col-xs-3" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>index</th>
+                <th>Id</th>
+                <th>게시판</th>
+                <th>작성 날짜</th>
+                <th>제목</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="item, index: ${boardList}">
+                <td th:text="${index.index+1}"></td>
+                <td th:text="${item.writer}"></td>
+                <td th:if="${item.type=='free'}">자유</td>
+                <td th:if="${item.type=='share'}">공유</td>
+                <td th:if="${item.type=='daily'}">일상</td>
+                <td th:text="${item.regdate}"></td>
+                <td><a th:text="${item.title}" th:href="@{/content(boardId=${item.boardId})}"></a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <a class="btn btn-primary" th:href="@{/new}" role="button">글쓰기</a>
+
+          <!-- <ul class="pagination">
+              <li><a href="#">1</a></li>
+              <li class="active"><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+            </ul> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .pagination > .active > a {
+      background-color: red;
+    }
+  </style>
+</html>
