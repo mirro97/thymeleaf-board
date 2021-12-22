@@ -5,8 +5,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-/vendor
-/scss
+**/src/main/resources/static/vendor/**
+**/src/main/resources/static/scss/**
 
 ### STS ###
 .apt_generated
