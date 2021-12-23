@@ -1,1 +1,1 @@
-thymeleafe-board
+thymeleaf-board
